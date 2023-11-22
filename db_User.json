@@ -1,0 +1,20 @@
+{
+  "2b861aee-c187-4ee9-93a2-a761cd053dbd": {
+    "id": "2b861aee-c187-4ee9-93a2-a761cd053dbd",
+    "created_at": "2023-11-21T21:19:21",
+    "updated_at": "2023-11-21T21:19:21",
+    "email": "ndabarisera@gmail.com",
+    "_password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "firstname": "Sera",
+    "lastname": "Ndabari"
+  },
+  "cd2c2f71-cb75-45cc-a662-61f5794116d9": {
+    "id": "cd2c2f71-cb75-45cc-a662-61f5794116d9",
+    "created_at": "2023-11-21T21:19:50",
+    "updated_at": "2023-11-21T21:19:50",
+    "email": "okoyotommy@gmail.com",
+    "_password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "firstname": "Thomas",
+    "lastname": "Okoyo"
+  }
+}
