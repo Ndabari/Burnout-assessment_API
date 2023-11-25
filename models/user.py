@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from sqlalchemy import Column, Integer, String
 from utils.db_conn import Base, session
 import uuid
@@ -15,13 +16,15 @@ class User(Base):
     last_name = Column(String)
     email = Column(String, unique=True)
     password = Column(String)
+    role = Column(String)
 
-    def __init__(self, firstname, lastname, email, password):
+    def __init__(self, firstname, lastname, email, password, role):
         self.id = str(uuid.uuid4())
         self.first_name = firstname
         self.last_name = lastname
         self.email = email
         self.password = password
+        self.role = role
 
     def is_valid_password(self, pwd: str) -> bool:
         """
