@@ -73,10 +73,10 @@ def signup():
         firstname=first_name,
         lastname=last_name,
         email=user_email,
-        password=user_password
+        password=user_password,
     )
 
     session.add(new_user)
     session.commit()
 
-    return jsonify({'Success': 'User created successfully'})
+    return jsonify({'Success': 'User created successfully, proceed to signin.'})

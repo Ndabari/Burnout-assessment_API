@@ -11,14 +11,14 @@ TIMESTAMP_FORMAT = '%Y-%m-%dT%H:%M:%S'
 class User(Base):
     __tablename__ = 'users'
 
-    id = Column(String, primary_key=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    email = Column(String, unique=True)
-    password = Column(String)
-    role = Column(String)
+    id = Column(String(40), primary_key=True)
+    first_name = Column(String(30))
+    last_name = Column(String(30))
+    email = Column(String(60), unique=True)
+    password = Column(String(30))
+    role = Column(String(30))
 
-    def __init__(self, firstname, lastname, email, password, role):
+    def __init__(self, firstname, lastname, email, password, role='user'):
         self.id = str(uuid.uuid4())
         self.first_name = firstname
         self.last_name = lastname
