@@ -22,7 +22,7 @@ class TokenAuth:
             'iss': 'Open-hub',
             'User': '{}'.format(user_id),
             'iat': datetime.now(timezone.utc),
-            'exp': datetime.now(timezone.utc) + timedelta(minutes=5),
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=30),
         }
 
         return jwt.encode(message, self.secret_word, algorithm='HS256')

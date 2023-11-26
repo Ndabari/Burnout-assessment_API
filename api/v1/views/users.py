@@ -22,7 +22,7 @@ def view_all_users():
 def view_one_users(user_id: str = None):
     """
         GET /api/v1/users/:id
-        :return: List of all user objects
+        :return: user
     """
     if user_id is None or user_id == '':
         abort(404)
