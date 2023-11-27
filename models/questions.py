@@ -13,24 +13,21 @@ class Questions(Base):
         self.id = q_id
         self.questions = question
 
+    def __str__(self):
+        return f'{self.id}, {self.questions}'
+
     def get_all_questions(self):
         return session.query(Questions).all()
 
     def change_question(self, question_id, new_question):
         pass
 
-    def to_json(self, for_serialization: bool = False) -> dict:
+    def to_dict(self) -> dict:
         """
-            Convert the object to a JSON dictionary
-            :param for_serialization:
-            :return: Dict
+            Convert the objects to a dict
+            :return: dict object
         """
-        result = {}
-
-        for key, value in self.__dict__.items():
-            if not for_serialization and key[0] == '_':
-                continue
-            else:
-                result[key] = value
-
-        return result
+        return {
+            'question_id': self.id,
+            'question': self.questions
+        }
