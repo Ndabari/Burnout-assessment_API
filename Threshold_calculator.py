@@ -39,13 +39,12 @@ def find_mean(scores: list) -> float:
 
 
 if __name__ == '__main__':
-    values: list = generate_scores(18, 90, 100)
+    values: list = generate_scores(18, 90, 90)
     mean_score: float = find_mean(values)
     sq_diff = squared_difference(values, mean_score)
     variance = round((sq_diff/mean_score), 2)
     stand_dev = round((math.sqrt(variance)), 2)
 
-    print(values)
     print(f'Mean score: {mean_score}\n'
           f'Squared Difference: {sq_diff}\n'
           f'Variance: {variance}\n'
