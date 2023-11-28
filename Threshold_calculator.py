@@ -45,6 +45,8 @@ if __name__ == '__main__':
     variance = round((sq_diff/mean_score), 2)
     stand_dev = round((math.sqrt(variance)), 2)
 
+    print(values)
+
     print(f'Mean score: {mean_score}\n'
           f'Squared Difference: {sq_diff}\n'
           f'Variance: {variance}\n'

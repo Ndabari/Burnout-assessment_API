@@ -55,10 +55,7 @@ def get_burnout_score():
         Disengagement_score = [int(D1), int(D2), int(D3), int(D4), int(D5), int(D6), int(D7), int(D8), int(D9)]
         Burn_rate = BurnoutCalculator.burnout_calculator(Disengagement_score, Exhaustion_scores)
 
-        if session.query(Scores).filter_by(user_id=user_id).first():
-            pass
-        else:
-            pass
+
         response = {
             'Total Score': Burn_rate.get('score'),
             'Burnout Level': Burn_rate.get('burnout_level')
