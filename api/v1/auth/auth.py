@@ -4,7 +4,8 @@
 """
 from typing import List
 from flask import request
-
+from api.v1.auth.token_auth import TokenAuth
+token_auth = TokenAuth()
 
 class Auth:
     """
@@ -18,7 +19,7 @@ class Auth:
             :param excluded_paths:
             :return:
         """
-        if path is not None or excluded_paths is None:
+        if path is None or excluded_paths is None:
             return True
         elif path[-1] is '/':
             if path in excluded_paths:
@@ -30,16 +31,27 @@ class Auth:
 
         return True
 
-    def session_cookie(self, request=None) -> str:
+    def is_session_token_valid(self, request=None) -> str:
         """
             Gets the cookie value from the request
             :param request:
             :return:
         """
         if request is not None:
-            return request.cookies.get('session-token')
+            session_token = request.cookies.get('session-token')
+            if session_token:
+                if token_auth.is_token_valid(session_token):
+                    return False
+                else:
+                    return None
+            else:
+                return None
         else:
             return None
 
     def current_user(self, request=None):
-        return None
+        user_id = token_auth.decode_token(request.cookies.get('session-token')).get('User')
+        if user_id:
+            return user_id
+        else:
+            return None

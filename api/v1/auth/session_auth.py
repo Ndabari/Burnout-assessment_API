@@ -2,11 +2,11 @@
 """
     Session Authentication Module
 """
-from models.user import User
 
 
-class SessionAuth(Auth):
+class SessionAuth:
     """
         Responsible for session authorization and validation
         inherits from auth class
     """
+    pass

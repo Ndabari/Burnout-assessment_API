@@ -34,3 +34,7 @@ class BurnoutCalculator:
                 'score': student_score,
                 'burnout_level': 'High'
             }
+
+    @classmethod
+    def update_score(cls):
+        pass

@@ -47,7 +47,7 @@ class TokenAuth:
             token_id: str = self.generate_token(user_id)
             return token_id
 
-    def token_validity(self, token: str) -> bool:
+    def is_token_valid(self, token: str) -> bool:
         decode_token = self.decode_token(token)
         expiration = decode_token.get('exp', 0)
         expiration_datetime = datetime.utcfromtimestamp(expiration).replace(tzinfo=timezone.utc)

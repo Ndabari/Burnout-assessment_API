@@ -9,8 +9,11 @@ class Scores(Base):
 
     user_id = Column(String, ForeignKey('users.id'))
     user = relationship('User', backref='scores')
-    score = Column(Integer)
+    score = Column(Integer, primary_key=True)
 
     def __init__(self, user, score):
         self.user = user
         self.score = score
+
+    def get_score(self):
+        pass
