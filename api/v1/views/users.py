@@ -14,7 +14,7 @@ def view_all_users():
         GET /api/v1/users
         :return: List of all user objects
     """
-    all_users = [user.to_json() for user in session.query(User).all]
+    all_users = [user.to_json() for user in session.query(User).all()]
     return jsonify(all_users)
 
 
@@ -26,9 +26,6 @@ def view_one_users(user_id: str = None):
     """
     if user_id is None or user_id == '':
         abort(404)
-    elif user_id == 'me':
-        if request.current_user is None:
-            abort(404)
-        else:
-            user = request.current_user
-            return jsonify(user.to_json())
+    else:
+        user = session.query(User).filter_by(id=user_id).first()
+        return jsonify(user.to_json())

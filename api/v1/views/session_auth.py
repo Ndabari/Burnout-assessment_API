@@ -32,9 +32,9 @@ def signin():
                     from api.v1.auth.token_auth import TokenAuth
                     session_token = TokenAuth().create_token(user.id)
                     if session_token is None:
-                        return jsonify({'error': 'No session token'})
+                        return jsonify({'error': 'Token server error'}), 500
 
-                    response = jsonify(user.to_json())
+                    response = jsonify({'OK': 'login successful'})
                     response.set_cookie('session-token', str(session_token))
                     return response, 200
                 else:
@@ -78,5 +78,6 @@ def signup():
 
     session.add(new_user)
     session.commit()
+    session.close()
 
-    return jsonify({'Success': 'User created successfully, proceed to signin.'})
+    return jsonify({'Success': 'User created successfully, proceed to signin.'}), 200

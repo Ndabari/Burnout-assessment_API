@@ -3,8 +3,10 @@
     Route Module for the API
 """
 from os import getenv
+from typing import Tuple
+
 from api.v1.views import app_views
-from flask import Flask, jsonify, abort, request
+from flask import Flask, jsonify, abort, request, Response
 from flask_cors import (CORS, cross_origin)
 from api.v1.auth.auth import Auth
 
@@ -15,7 +17,7 @@ auth = Auth()
 
 
 @app.errorhandler(401)
-def unauthorized_error(error) -> str:
+def unauthorized_error(error) -> tuple[Response, int]:
     """
         Request Unauthorized handler
         :param error:
