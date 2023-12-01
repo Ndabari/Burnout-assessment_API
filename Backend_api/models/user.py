@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-from sqlalchemy import Column, Integer, String
-from utils.db_conn import Base, session
+from sqlalchemy import Column, String
+from Backend_api.utils.db_conn import Base, session
 import uuid
 from datetime import datetime
-import hashlib
 
 TIMESTAMP_FORMAT = '%Y-%m-%dT%H:%M:%S'
 

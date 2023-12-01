@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, backref
-from utils.db_conn import Base, session
+from Backend_api.utils.db_conn import Base, session
 
 
 class Responses(Base):

@@ -3,12 +3,11 @@
     Route Module for the API
 """
 from os import getenv
-from typing import Tuple
 
-from api.v1.views import app_views
+from Backend_api.api.v1.views import app_views
 from flask import Flask, jsonify, abort, request, Response
-from flask_cors import (CORS, cross_origin)
-from api.v1.auth.auth import Auth
+from flask_cors import (CORS)
+from Backend_api.api.v1.auth.auth import Auth
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
@@ -53,11 +52,12 @@ def before_request():
         :return:
     """
     ex_path = ['/api/v1/status/', '/api/v1/unauthorized/',
-               '/api/v1/forbidden/', '/api/v1/auth/signin/', '/api/v1/auth/signup/']
+               '/api/v1/forbidden/', '/api/v1/auth/signin/', '/api/v1/auth/signup/', '/api/v1/burn-rate/get-questions/']
 
     if not auth.require_auth(request.path, ex_path):
         return
     elif auth.is_session_token_valid(request) is None:
+        print(request.authorization)
         abort(401)
     elif auth.current_user(request) is None:
         abort(403)

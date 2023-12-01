@@ -2,7 +2,7 @@
 """
     User module test
 """
-from models.user import User
+from Backend_api.models.user import User
 
 # search for user using email
 user_email = 'okoyotommy@gmail.com'

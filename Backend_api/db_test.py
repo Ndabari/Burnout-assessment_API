@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from models.questions import Questions
-from utils.db_conn import session
+from Backend_api.models.questions import Questions
+from Backend_api.utils import session
 
 """
 allUsers = session.query(User).all()

@@ -6,7 +6,7 @@
           the existing data or the whole storage area
 """
 
-from utils.db_conn import Base, engine
+from Backend_api.utils.db_conn import Base, engine
 from sqlalchemy.exc import SQLAlchemyError
 
 

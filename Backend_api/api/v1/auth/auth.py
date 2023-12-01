@@ -3,8 +3,7 @@
     This class manages the API authentication
 """
 from typing import List
-from flask import request
-from api.v1.auth.token_auth import TokenAuth
+from Backend_api.api.v1.auth.token_auth import TokenAuth
 token_auth = TokenAuth()
 
 class Auth:

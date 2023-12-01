@@ -2,10 +2,10 @@
 """
     User view module
 """
-from api.v1.views import app_views
-from flask import jsonify, abort, request
-from models.user import User
-from utils.db_conn import session
+from Backend_api.api.v1.views import app_views
+from flask import jsonify, abort
+from Backend_api.models.user import User
+from Backend_api.utils.db_conn import session
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)

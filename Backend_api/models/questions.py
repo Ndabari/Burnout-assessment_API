@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from sqlalchemy import Column, Integer, String
-from utils.db_conn import Base, session
+from sqlalchemy import Column, String
+from Backend_api.utils.db_conn import Base, session
 
 
 class Questions(Base):

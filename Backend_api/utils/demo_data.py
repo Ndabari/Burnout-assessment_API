@@ -1,5 +1,5 @@
-from models.user import User
-from utils.db_conn import Base, session, engine
+from Backend_api.models.user import User
+from Backend_api.utils.db_conn import Base, session, engine
 
 Base.metadata.create_all(engine)
 

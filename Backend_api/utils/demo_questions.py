@@ -1,5 +1,5 @@
-from models.questions import Questions
-from utils.db_conn import Base, session, engine
+from Backend_api.models.questions import Questions
+from Backend_api.utils.db_conn import Base, session, engine
 
 Base.metadata.create_all(engine)
 

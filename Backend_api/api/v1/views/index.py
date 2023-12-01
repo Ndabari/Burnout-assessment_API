@@ -3,7 +3,7 @@
     Index views module
 """
 from flask import jsonify, abort
-from api.v1.views import app_views
+from Backend_api.api.v1.views import app_views
 
 
 @app_views.route('/', methods=['GET'], strict_slashes=False)

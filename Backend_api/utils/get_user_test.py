@@ -2,8 +2,8 @@
 """
     User module test
 """
-from models.user import User
-from utils.db_conn import session
+from Backend_api.models.user import User
+from Backend_api.utils.db_conn import session
 
 # filter by email
 user_email = 'okoyotommy@gmail.com'

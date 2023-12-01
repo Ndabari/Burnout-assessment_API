@@ -2,10 +2,10 @@
 """
     Handles routes for all session authentication
 """
-from models.user import User
+from Backend_api.models.user import User
 from flask import request, jsonify, abort
-from api.v1.views import app_views
-from utils.db_conn import session
+from Backend_api.api.v1.views import app_views
+from Backend_api.utils.db_conn import session
 
 
 @app_views.route('/auth/signin', methods=['POST'], strict_slashes=False)
@@ -29,7 +29,7 @@ def signin():
                 return jsonify({'error': 'No user found for this email'}), 404
             else:
                 if user.is_valid_password(user_password):
-                    from api.v1.auth.token_auth import TokenAuth
+                    from Backend_api.api.v1.auth.token_auth import TokenAuth
                     session_token = TokenAuth().create_token(user.id)
                     if session_token is None:
                         return jsonify({'error': 'Token server error'}), 500

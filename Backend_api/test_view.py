@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from flask import Blueprint, request, jsonify
-from models.user import User
+from Backend_api.models.user import User
 bp_views = Blueprint('bp_views', __name__, url_prefix='/auth')
 
 
@@ -21,7 +21,7 @@ def signin():
     else:
         for user in found_user:
             if user.is_valid_password(user_password):
-                from api.v1.auth.token_auth import TokenAuth
+                from Backend_api.api.v1.auth.token_auth import TokenAuth
                 session_token = TokenAuth.create_token(user.id)
                 response = jsonify(user.to_json())
                 response.set_cookie('session-token', session_token)

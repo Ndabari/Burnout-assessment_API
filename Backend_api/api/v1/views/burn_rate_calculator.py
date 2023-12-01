@@ -4,13 +4,13 @@
 """
 from sqlalchemy.exc import NoResultFound
 
-from models.questions import Questions
-from models.scores import Scores
-from models.user import User
-from flask import request, jsonify, abort
-from api.v1.views import app_views
-from utils.burn_rate_calc import BurnoutCalculator
-from utils.db_conn import session
+from Backend_api.models.questions import Questions
+from Backend_api.models.scores import Scores
+from Backend_api.models.user import User
+from flask import request, jsonify
+from Backend_api.api.v1.views import app_views
+from Backend_api.utils.burn_rate_calc import BurnoutCalculator
+from Backend_api.utils.db_conn import session
 
 
 @app_views.route('/burn-rate/get-questions', methods=['GET'], strict_slashes=False)
