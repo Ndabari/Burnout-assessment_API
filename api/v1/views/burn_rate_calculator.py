@@ -2,8 +2,11 @@
 """
     Handles routes for all burn-rate calculations
 """
+from sqlalchemy.exc import NoResultFound
+
 from models.questions import Questions
 from models.scores import Scores
+from models.user import User
 from flask import request, jsonify, abort
 from api.v1.views import app_views
 from utils.burn_rate_calc import BurnoutCalculator
@@ -55,6 +58,20 @@ def get_burnout_score():
         Disengagement_score = [int(D1), int(D2), int(D3), int(D4), int(D5), int(D6), int(D7), int(D8), int(D9)]
         Burn_rate = BurnoutCalculator.burnout_calculator(Disengagement_score, Exhaustion_scores)
 
+        try:
+            existing_score = session.query(Scores).filter_by(user_id=user_id).one()
+            if existing_score:
+                existing_score.score = Burn_rate.get('score')
+        except NoResultFound:
+            user_obj = session.query(User).filter_by(id=user_id).first()
+            new_score = Scores(
+                user=user_obj,
+                score=Burn_rate.get('score')
+            )
+            session.add(new_score)
+
+        session.commit()
+        session.close()
 
         response = {
             'Total Score': Burn_rate.get('score'),
@@ -62,4 +79,3 @@ def get_burnout_score():
         }
 
         return jsonify(response), 200
-

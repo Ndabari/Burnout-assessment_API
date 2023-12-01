@@ -34,7 +34,9 @@ def signin():
                     if session_token is None:
                         return jsonify({'error': 'Token server error'}), 500
 
-                    response = jsonify({'OK': 'login successful'})
+                    response = jsonify({'OK': 'login successful',
+                                        'session-token': session_token})
+
                     response.set_cookie('session-token', str(session_token))
                     return response, 200
                 else:
